@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <link rel="icon" href="{{url_for('static',filename='favicon.svg')}}" type="image/svg+xml">
+  <meta name="description" content="HarvestLink brings farm planning, harvest forecasts and local buyers together in one connected space.">
+  <title>{% block title %}HarvestLink · Grow with a market in mind{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+  <script defer src="{{ url_for('static',filename='app.js') }}"></script>
+</head>
+<body class="{% if studio %}studio-body{% else %}public-body{% endif %}">
+<svg xmlns="http://www.w3.org/2000/svg" class="icon-defs" aria-hidden="true">
+ <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C10 4 4 7 4 15a5 5 0 0 0 5 5c8 0 11-6 11-16Z"/><path d="M4 20c3-5 6-8 11-11"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+ <symbol id="i-diagonal" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"/></symbol>
+ <symbol id="i-plant" viewBox="0 0 24 24"><path d="M12 21V11m0 4c-5 0-8-3-8-8 5 0 8 3 8 8Zm0-3c0-5 3-8 8-8 0 5-3 8-8 8Z"/></symbol>
+ <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+ <symbol id="i-field" viewBox="0 0 24 24"><path d="m3 20 5-16h8l5 16H3Zm5-8h8M12 4v16M5 16h14"/></symbol>
+ <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 5h3"/></symbol>
+ <symbol id="i-basket" viewBox="0 0 24 24"><path d="m5 10 3-6m11 6-3-6M3 10h18l-2 11H5L3 10Zm6 4 1 4m5-4-1 4"/></symbol>
+ <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-9M15 6h6v6"/></symbol>
+ <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M3 10h18m-4 6h1M6 6V4h12"/></symbol>
+ <symbol id="i-tool" viewBox="0 0 24 24"><path d="M21 7a6 6 0 0 1-8 6L6 20a2 2 0 0 1-3-3l7-7a6 6 0 0 1 6-8l-3 5 4 4 4-4Z"/></symbol>
+ <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="4"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+ <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+ <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+ <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></symbol>
+ <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></symbol>
+ <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+ <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+ <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1m0-15.6-2.1 2.1M6.3 17.7l-2.1 2.1"/></symbol>
+ <symbol id="i-share" viewBox="0 0 24 24"><path d="M8 12h13m-6-6 6 6-6 6M11 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/></symbol>
+ <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+ <symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 2C8 8 5 11 5 15a7 7 0 0 0 14 0c0-4-3-7-7-13Z"/></symbol>
+ <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></symbol>
+</svg>
+<div class="loader" id="page-loader" aria-hidden="true">
+  <div class="loader-mark"><span class="loader-seed"></span><span class="loader-leaf loader-leaf-a"></span><span class="loader-leaf loader-leaf-b"></span></div>
+  <span class="loader-word">harvest<span>link</span><span class="loader-dot">.</span></span>
+  <span class="loader-sub">FROM FIELD TO FUTURE</span>
+</div>
+<header class="site-header" id="site-header">
+  <div class="header-inner container-wide">
+    <a class="brand" href="{{url_for('home')}}" aria-label="HarvestLink home"><span class="brand-mark"><svg class="icon"><use href="#i-plant"/></svg></span><span>harvest<span class="brand-light">link</span><b>.</b></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="{{url_for('home')}}#how-it-works">The idea</a>
+      <a href="{{url_for('marketplace')}}" {% if active_page in ['marketplace','listing'] %}class="selected"{% endif %}>Marketplace</a>
+      <a href="{{url_for('public_farm')}}" {% if active_page=='public_farm' %}class="selected"{% endif %}>Meet the farm</a>
+    </nav>
+    <div class="header-actions"><span class="header-live"><i></i> FARM-TO-MARKET DEMO</span><a class="btn btn-espresso btn-small" href="{{url_for('dashboard')}}">Open studio <svg class="icon"><use href="#i-diagonal"/></svg></a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button></div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="{{url_for('home')}}">Home</a><a href="{{url_for('marketplace')}}">Marketplace</a><a href="{{url_for('public_farm')}}">Meet the farm</a>
+    <a href="{{url_for('dashboard')}}">Farm studio</a><a href="{{url_for('fields')}}">Fields & crops</a><a href="{{url_for('activities')}}">Activity planner</a><a href="{{url_for('finance')}}">Finances</a>
+  </nav>
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}<div class="toast-stack" role="status">{% for category,message in messages %}<div class="toast toast-{{category}}"><svg class="icon"><use href="#i-info"/></svg>{{message}}<button type="button" aria-label="Dismiss" onclick="this.parentElement.remove()">×</button></div>{% endfor %}</div>{% endif %}
+{% endwith %}
+{% if studio %}
+  <div class="studio-shell">
+    <aside class="side-nav" aria-label="Studio navigation">
+      <div class="side-heading"><span class="tiny-dot"></span> THE FARM STUDIO <span class="side-version">V1.0</span></div>
+      <a href="{{url_for('dashboard')}}" {% if active_page=='dashboard' %}class="active"{% endif %}><svg class="icon"><use href="#i-grid"/></svg> Overview</a>
+      <a href="{{url_for('fields')}}" {% if active_page in ['fields','add_crop'] %}class="active"{% endif %}><svg class="icon"><use href="#i-field"/></svg> Fields & crops</a>
+      <a href="{{url_for('activities')}}" {% if active_page in ['activities','toggle_task'] %}class="active"{% endif %}><svg class="icon"><use href="#i-calendar"/></svg> Activity planner</a>
+      <a href="{{url_for('equipment')}}" {% if active_page=='equipment' %}class="active"{% endif %}><svg class="icon"><use href="#i-tool"/></svg> Equipment</a>
+      <a href="{{url_for('reservations')}}" {% if active_page=='reservations' %}class="active"{% endif %}><svg class="icon"><use href="#i-basket"/></svg> Reservations</a>
+      <a href="{{url_for('finance')}}" {% if active_page=='finance' %}class="active"{% endif %}><svg class="icon"><use href="#i-wallet"/></svg> Farm finances</a>
+      <a href="{{url_for('insights')}}" {% if active_page=='insights' %}class="active"{% endif %}><svg class="icon"><use href="#i-trend"/></svg> Insights & alerts</a>
+      <div class="side-separator"></div>
+      <a href="{{url_for('public_farm')}}"><svg class="icon"><use href="#i-diagonal"/></svg> Public farm page</a>
+      <a href="{{url_for('settings')}}" {% if active_page=='settings' %}class="active"{% endif %}><svg class="icon"><use href="#i-settings"/></svg> Farm settings</a>
+      <div class="side-spacer"></div>
+      <div class="side-farm-badge"><div class="small-plant"><svg class="icon"><use href="#i-plant"/></svg></div><span class="muted overline">YOUR FARM</span><strong>{{farm.name}}</strong><span>{{farm.location}}</span><a href="{{url_for('settings')}}">Manage profile <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+    </aside>
+    <main class="studio-main">{% block content %}{% endblock %}</main>
+  </div>
+{% else %}
+  <main>{% block public_content %}{% endblock %}</main>
+{% endif %}
+<footer class="footer"><div class="container-wide footer-grid"><div><a href="{{url_for('home')}}" class="footer-brand">harvest<span>link</span>.</a><p>Better growing. Better selling.<br>One connected harvest.</p></div><div class="footer-small">BUILT FOR GROWERS, ROOTED IN POSSIBILITY.<br>Rule-based farm-to-market prototype · © {{today_iso[:4]}}</div><div class="footer-links"><a href="{{url_for('marketplace')}}">Marketplace</a><a href="{{url_for('dashboard')}}">Farm studio</a><a href="{{url_for('settings')}}">Settings</a></div></div></footer>
+</body>
+</html>
