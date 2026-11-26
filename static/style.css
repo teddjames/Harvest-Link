@@ -98,3 +98,54 @@ html,body{overflow-x:clip}
     padding-bottom: 44px;
   }
 }
+
+
+/* =========================================
+   FEATURE CARD - DECORATION OVERLAP FIX
+   ========================================= */
+
+/* Keep text and icons above the decoration */
+.feature-card > .feature-index,
+.feature-card > .feature-icon,
+.feature-card > h3,
+.feature-card > p,
+.feature-card > .feature-go {
+    position: relative;
+    z-index: 2;
+}
+
+/* Reposition the circular illustration */
+.feature-card .abstract-fields {
+    width: 295px;
+    height: 295px;
+    right: -137px;
+    bottom: -188px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Adjust the inner circle */
+.feature-card .abstract-fields i {
+    width: 145px;
+    height: 145px;
+    top: 75px;
+    left: 75px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 760px) {
+    .feature-card .abstract-fields {
+        width: 240px;
+        height: 240px;
+        right: -132px;
+        bottom: -198px;
+    }
+
+    .feature-card .abstract-fields i {
+        width: 118px;
+        height: 118px;
+        top: 60px;
+        left: 60px;
+    }
+}
+
